@@ -1,11 +1,11 @@
 extends Node2D
 
-export var spawn_scene    : PackedScene
-export var density1k      : float = 5.0
-export var object_width   : int = 1
-export var object_height  : int = 1
-export var start_x        : int = 0
-export var generate_width : int = -1
+@export var spawn_scene    : PackedScene
+@export var density1k      : float = 5.0
+@export var object_width   : int = 1
+@export var object_height  : int = 1
+@export var start_x        : int = 0
+@export var generate_width : int = -1
 
 func _ready():
 	pass

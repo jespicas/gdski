@@ -1,29 +1,68 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=3 uid="uid://d0uuhjn2n3i4d"]
 
-[ext_resource path="res://ski/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ski/SkiSlope.gd" type="Script" id=2]
-[ext_resource path="res://ski/terrain/generators/LiftPoleGenerator.gd" type="Script" id=3]
-[ext_resource path="res://ski/terrain/generators/AreaGenerator.gd" type="Script" id=4]
-[ext_resource path="res://ski/terrain/SmallTree.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ski/terrain/BigTree.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ski/terrain/DeadTree.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ski/terrain/SmallBump.tscn" type="PackedScene" id=8]
-[ext_resource path="res://ski/terrain/BigBump.tscn" type="PackedScene" id=9]
-[ext_resource path="res://ski/terrain/Rough.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ski/terrain/Rock.tscn" type="PackedScene" id=11]
-[ext_resource path="res://ski/terrain/Stump.tscn" type="PackedScene" id=12]
+[ext_resource type="PackedScene" uid="uid://dwxo7lxb2bqji" path="res://ski/Player.tscn" id="1"]
+[ext_resource type="Script" path="res://ski/test.gd" id="1_mf3ea"]
+[ext_resource type="Script" path="res://ski/SkiSlope.gd" id="2"]
+[ext_resource type="Script" path="res://ski/terrain/generators/LiftPoleGenerator.gd" id="3"]
+[ext_resource type="Script" path="res://ski/terrain/generators/AreaGenerator.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://yfln1bpei84b" path="res://ski/terrain/SmallTree.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://b3jqw4j2m54ly" path="res://ski/terrain/BigTree.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://57pn7pp1xvn4" path="res://ski/terrain/DeadTree.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bscsoruijnd6b" path="res://ski/terrain/SmallBump.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://ctc0r3am3tpps" path="res://ski/terrain/BigBump.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://tm11fa4dottc" path="res://ski/terrain/Rough.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bvl62w0sqma8g" path="res://ski/terrain/Stump.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://gu1ows3j4c3c" path="res://ski/terrain/Rock.tscn" id="12_oeidj"]
+[ext_resource type="PackedScene" uid="uid://d4bd8vuvafmqw" path="res://ski/terrain/SunwebLogo.tscn" id="14_l53sv"]
 
 [node name="Test" type="Node2D"]
+script = ExtResource("1_mf3ea")
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 4096, 67.446 )
+[node name="Player" parent="." instance=ExtResource("1")]
+z_as_relative = false
+position = Vector2(4096, 67.446)
 free_move = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
+
+[node name="Control" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Live" type="Label" parent="Player/Control"]
+layout_mode = 0
+offset_left = -571.0
+offset_top = -330.446
+offset_right = -359.0
+offset_bottom = -288.446
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Lives:"
+
+[node name="Velocity" type="Label" parent="Player/Control"]
+layout_mode = 0
+offset_left = -572.0
+offset_top = -299.446
+offset_right = -428.0
+offset_bottom = -257.446
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Velocity:"
+
+[node name="Points" type="Label" parent="Player/Control"]
+layout_mode = 0
+offset_left = -572.0
+offset_top = -266.446
+offset_right = -419.0
+offset_bottom = -224.446
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Points:"
 
 [node name="SkiSlope" type="Node2D" parent="."]
-script = ExtResource( 2 )
+script = ExtResource("2")
 tiles_down = 16
 camera_node = NodePath("../Player/Camera2D")
 
@@ -32,67 +71,173 @@ camera_node = NodePath("../Player/Camera2D")
 [node name="Generators" type="Node2D" parent="SkiSlope"]
 
 [node name="LiftPoleGenerator" type="Node2D" parent="SkiSlope/Generators"]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="BigTreeGenerator" type="Node2D" parent="SkiSlope/Generators"]
-script = ExtResource( 4 )
-spawn_scene = ExtResource( 6 )
+script = ExtResource("4")
+spawn_scene = ExtResource("6")
 density1k = 0.197
 object_width = 4
 object_height = 8
 
 [node name="RoughGenerator" type="Node2D" parent="SkiSlope/Generators"]
-position = Vector2( 8.97974, 0 )
-script = ExtResource( 4 )
-spawn_scene = ExtResource( 10 )
+position = Vector2(8.97974, 0)
+script = ExtResource("4")
+spawn_scene = ExtResource("10")
 density1k = 0.218
 object_width = 5
 object_height = 3
 
 [node name="SmallTreeGenerator" type="Node2D" parent="SkiSlope/Generators"]
-position = Vector2( 8.97974, 0 )
-script = ExtResource( 4 )
-spawn_scene = ExtResource( 5 )
+position = Vector2(8.97974, 0)
+script = ExtResource("4")
+spawn_scene = ExtResource("5")
 density1k = 1.58
 object_width = 3
 object_height = 3
 
 [node name="DeadTreeGenerator" type="Node2D" parent="SkiSlope/Generators"]
-position = Vector2( 8.97974, 0 )
-script = ExtResource( 4 )
-spawn_scene = ExtResource( 7 )
+position = Vector2(8.97974, 0)
+script = ExtResource("4")
+spawn_scene = ExtResource("7")
 density1k = 0.218
 object_width = 3
 object_height = 3
 
 [node name="BigBumpGenerator" type="Node2D" parent="SkiSlope/Generators"]
-position = Vector2( 8.97974, 0 )
-script = ExtResource( 4 )
-spawn_scene = ExtResource( 9 )
+position = Vector2(8.97974, 0)
+script = ExtResource("4")
+spawn_scene = ExtResource("9")
 density1k = 0.14
 object_width = 3
 object_height = 2
 
 [node name="SmallBumpGenerator" type="Node2D" parent="SkiSlope/Generators"]
-position = Vector2( 8.97974, 0 )
-script = ExtResource( 4 )
-spawn_scene = ExtResource( 8 )
+position = Vector2(8.97974, 0)
+script = ExtResource("4")
+spawn_scene = ExtResource("8")
 density1k = 0.492
 object_width = 2
 object_height = 2
 
 [node name="RockGenerator" type="Node2D" parent="SkiSlope/Generators"]
-position = Vector2( 8.97974, 0 )
-script = ExtResource( 4 )
-spawn_scene = ExtResource( 11 )
+position = Vector2(8.97974, 0)
+script = ExtResource("4")
+spawn_scene = ExtResource("12_oeidj")
 density1k = 0.452
 object_width = 3
 object_height = 2
 
 [node name="StumpGenerator" type="Node2D" parent="SkiSlope/Generators"]
-position = Vector2( 8.97974, 0 )
-script = ExtResource( 4 )
-spawn_scene = ExtResource( 12 )
+position = Vector2(8.97974, 0)
+script = ExtResource("4")
+spawn_scene = ExtResource("12")
 density1k = 0.197
 object_width = 2
 object_height = 2
+
+[node name="SunwebGenerator" type="Node2D" parent="SkiSlope/Generators"]
+position = Vector2(17.9595, 0)
+script = ExtResource("4")
+spawn_scene = ExtResource("14_l53sv")
+density1k = 0.197
+object_width = 2
+object_height = 2
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Game Over
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 68.0
+offset_right = 222.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Play again?"
+
+[node name="Yes" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 125.0
+offset_right = 88.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 20
+text = "Yes"
+
+[node name="No" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 126.0
+offset_right = 163.0
+offset_bottom = 157.0
+theme_override_font_sizes/font_size = 20
+text = "No"
+
+[node name="TextEdit" type="TextEdit" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 52.0
+offset_top = 169.0
+offset_right = 178.0
+offset_bottom = 200.0
+
+[node name="Scores" type="ItemList" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 328.0
+offset_bottom = 331.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+auto_height = true
+item_count = 2
+max_columns = 2
+fixed_column_width = 150
+item_0/text = "Name"
+item_1/text = "Points"
+
+[node name="Continue" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 99.0
+offset_top = 377.0
+offset_right = 195.0
+offset_bottom = 417.0
+theme_override_font_sizes/font_size = 20
+text = "Start"
+
+[node name="WaitScores" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Waiting for scores ..."
+
+[node name="DurationGame" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="pressed" from="Control/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Control/No" to="." method="_on_no_pressed"]
+[connection signal="text_changed" from="Control/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="Control/Continue" to="." method="_on_continue_pressed"]
+[connection signal="timeout" from="DurationGame" to="." method="_on_duration_game_timeout"]

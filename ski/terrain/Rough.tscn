@@ -1,7 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://tm11fa4dottc"]
 
-[ext_resource path="res://ski/terrain/Rough.png" type="Texture" id=1]
+[ext_resource type="Texture2D" uid="uid://dq6tq6srqtdi3" path="res://ski/terrain/Rough.png" id="1"]
 
-[node name="Rough" type="Sprite"]
-texture = ExtResource( 1 )
-centered = false
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i53bq"]
+size = Vector2(203, 102)
+
+[node name="Rough" type="Node2D"]
+
+[node name="RoughArea" type="Area2D" parent="."]
+z_as_relative = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoughArea"]
+position = Vector2(1.5, 1)
+shape = SubResource("RectangleShape2D_i53bq")
+
+[node name="Sprite2D" type="Sprite2D" parent="RoughArea"]
+scale = Vector2(3, 3)
+texture = ExtResource("1")

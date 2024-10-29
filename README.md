@@ -7,3 +7,5 @@ Drag the mouse around to change the direction you are skiing.
 This is still a very early very feature incomplete game!
 
 Requires Godot 3.2
+
+https://github.com/youkaicountry/gdski

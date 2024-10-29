@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4bd8vuvafmqw"]
+
+[ext_resource type="Texture2D" uid="uid://b1lkgjcpkrs1o" path="res://ski/terrain/SunwebLogo.png" id="1_33x2w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvhvj"]
+radius = 14.0
+height = 32.0
+
+[node name="SunwebLogo" type="Node2D"]
+
+[node name="SunwebLogo" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SunwebLogo"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_33x2w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SunwebLogo"]
+position = Vector2(3, 5)
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_cvhvj")

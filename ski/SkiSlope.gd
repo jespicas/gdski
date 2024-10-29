@@ -1,17 +1,17 @@
 extends Node2D
 
-export var tile_size := 16.0
-export var tiles_across := 512
-export var tiles_down   := 64
-export var camera_node : NodePath
+@export var tile_size := 16.0
+@export var tiles_across := 512
+@export var tiles_down   := 64
+@export var camera_node : NodePath
 
-export var bottom_gen_buffer := 2
-export var top_degen_buffer := 8
+@export var bottom_gen_buffer := 2
+@export var top_degen_buffer := 8
 
 var next_region := 0
 
-onready var camera = get_node(camera_node) as Camera2D
-
+@onready var camera = get_node(camera_node) as Camera2D
+	
 func _ready():
 	self.spawn_region()
 	pass

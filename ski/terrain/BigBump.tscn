@@ -1,7 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://ctc0r3am3tpps"]
 
-[ext_resource path="res://ski/terrain/BigBump.png" type="Texture" id=1]
+[ext_resource type="Texture2D" uid="uid://b7vgksdc6ytwl" path="res://ski/terrain/BigBump.png" id="1"]
+[ext_resource type="Script" path="res://ski/terrain/big_bump.gd" id="1_d7lmk"]
 
-[node name="BigBump" type="Sprite"]
-texture = ExtResource( 1 )
-centered = false
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i53bq"]
+size = Vector2(93, 50)
+
+[node name="BigBump" type="Node2D"]
+script = ExtResource("1_d7lmk")
+
+[node name="BigBumpArea" type="Area2D" parent="."]
+z_as_relative = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigBumpArea"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_i53bq")
+
+[node name="Sprite2D" type="Sprite2D" parent="BigBumpArea"]
+scale = Vector2(3, 3)
+texture = ExtResource("1")
+
+[connection signal="area_entered" from="BigBumpArea" to="." method="_on_area_2d_area_entered"]

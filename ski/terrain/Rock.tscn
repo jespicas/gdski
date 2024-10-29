@@ -1,7 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://gu1ows3j4c3c"]
 
-[ext_resource path="res://ski/terrain/Rock.png" type="Texture" id=1]
+[ext_resource type="Texture2D" uid="uid://7f2nm5mfmhkb" path="res://ski/terrain/Rock.png" id="1"]
+[ext_resource type="Script" path="res://ski/terrain/rock.gd" id="1_kvir1"]
 
-[node name="Rock" type="Sprite"]
-texture = ExtResource( 1 )
-centered = false
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aet0n"]
+size = Vector2(74, 36)
+
+[node name="Rock" type="Node2D"]
+script = ExtResource("1_kvir1")
+
+[node name="RockArea" type="Area2D" parent="."]
+z_as_relative = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RockArea"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_aet0n")
+
+[node name="Sprite2D" type="Sprite2D" parent="RockArea"]
+scale = Vector2(3, 3)
+texture = ExtResource("1")
+
+[connection signal="area_entered" from="RockArea" to="." method="_on_area_2d_area_entered"]

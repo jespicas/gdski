@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi4jwj5fatdx8"]
+
+[ext_resource type="Texture2D" uid="uid://7f2nm5mfmhkb" path="res://ski/terrain/Rock.png" id="1"]
+
+[node name="Rock_Org" type="Sprite2D"]
+texture = ExtResource("1")
+centered = false
